@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "APP_ENV=local babel-watch src/index.js --presets es2015",
-    "build": "npm run clean && APP_ENV=prod babel --presets es2015 src --out-dir lib",
+    "build": "npm run clean && APP_ENV=production babel --presets es2015 src --out-dir lib",
     "clean": "rm -rf lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
