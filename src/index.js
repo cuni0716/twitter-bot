@@ -2,7 +2,7 @@ import twitter from 'twitter';
 import moment from 'moment';
 
 
-if (process.env.APP_ENV === 'local') require('dotenv').config();
+require('dotenv').config();
 
 const TWITTER_CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
 const TWITTER_CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET;
