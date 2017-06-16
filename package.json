@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "APP_ENV=local babel-watch src/index.js --presets es2015",
+    "start": "source env.sh && babel-watch src/index.js --presets es2015",
     "build": "npm run clean && APP_ENV=production babel --presets es2015 src --out-dir lib",
     "clean": "rm -rf lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "moment": "^2.18.1",
     "twitter": "^1.7.1"
