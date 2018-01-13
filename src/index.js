@@ -48,7 +48,7 @@ function Retweet() {
     });
 
     return Bot.post(`statuses/retweet/${bestOne.id}.json`, { id: bestOne.id }, (err) => {
-      if (err) return console.log(`Bot could not retweet id ${bestOne.id}. REASON: ${err[0].message}`);
+      if (err) return console.log(`Bot could not retweet id ${bestOne.id} with rating ${bestOne.rating}. REASON: ${err[0].message}`);
 
       console.log(`Bot retweeted ${bestOne.id} with rating ${bestOne.rating}`);
       console.log(`In this session we already retweet ${RETWEETED.length} tweets`);
