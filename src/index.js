@@ -48,8 +48,6 @@ function Retweet() {
     const tweets = data.statuses;
     let bestOne = { rating: 0, id: null };
 
-    console.log('[ tweets.length ]', tweets.length);
-
     tweets.forEach((twit) => {
       const rating = calculateRating(twit);
       if (rating > bestOne.rating && !RETWEETED.includes(twit.id)) {
