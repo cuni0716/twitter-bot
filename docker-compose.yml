@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+    twitter-bot:
+        build: .
+        volumes:
+            - ./:/app
+        ports:
+            - '8000:3000'
+        env_file:
+          - .env
