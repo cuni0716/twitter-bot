@@ -15,6 +15,7 @@ const TWITTER_ACCESS_TOKEN = process.env.TWITTER_ACCESS_TOKEN;
 const TWITTER_ACCESS_TOKEN_SECRET = process.env.TWITTER_ACCESS_TOKEN_SECRET;
 const TWITTER_SEARCH_PHRASE = '#reduxjs OR #ecmascript OR #expressjs OR #reactjs OR #nodejs';
 const TWO_HOURS = 120 * 60 * 1000;
+const COUNT = 100;
 const RESULT_TYPE = 'recent';
 const LANG = 'en';
 const RETWEETED = [];
@@ -47,6 +48,8 @@ function Retweet() {
     const tweets = data.statuses;
     let bestOne = { rating: 0, id: null };
 
+    console.log('[ tweets.length ]', tweets.length);
+
     tweets.forEach((twit) => {
       const rating = calculateRating(twit);
       if (rating > bestOne.rating && !RETWEETED.includes(twit.id)) {
@@ -65,5 +68,7 @@ function Retweet() {
   });
 
 }
+
+Retweet();
 
 setInterval(Retweet, TWO_HOURS);
