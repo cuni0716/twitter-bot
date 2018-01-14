@@ -43,14 +43,14 @@ function Retweet() {
       const rating = calculateRating(twit);
       if (rating > bestOne.rating && !RETWEETED.includes(twit.id)) {
         bestOne = { rating, id: twit.id_str };
-        RETWEETED.push(twit.id);
       }
     });
 
     return Bot.post(`statuses/retweet/${bestOne.id}.json`, { id: bestOne.id }, (err) => {
       if (err) return console.log(`Bot could not retweet id ${bestOne.id} with rating ${bestOne.rating}. REASON: ${err[0].message}`);
 
-      console.log(`Bot retweeted ${bestOne.id} with rating ${bestOne.rating}`);
+      RETWEETED.push(bestOne.id);
+      console.log(`[ RETWEET ] ---> ${bestOne.id} with rating ${bestOne.rating}`);
       console.log(`In this session we already retweet ${RETWEETED.length} tweets`);
       return null;
     });
