@@ -11,14 +11,14 @@ export const calculateRating = (twit) => {
   return retweets + favourites;
 };
 
-export const catchError = errors => console.error('[ ERROR ]', errors[0].message);
-
+export const time = () => format(new Date(), 'DD-MM-YYYY HH:mm:ss');
+export const catchError = errors => console.error(time(), ' --- [ ERROR ]', errors[0].message);
 export const randomTime = () => Math.floor((Math.random() * THREE_HOURS) + ONE_HOUR);
 
 export const prepareNewRetweet = () => {
   const delay = randomTime();
   const nextRetweetDate = new Date(Date.now() + delay);
   const formattedDate = format(addHours(nextRetweetDate, 1), 'HH:mm:ss');
-  console.log(`[ INFO ] Next retweet will be at ${formattedDate}`);
+  console.log(`${time()} --- [ INFO ] Next retweet will be at ${formattedDate}`);
   return setTimeout(Retweet, delay);
 };

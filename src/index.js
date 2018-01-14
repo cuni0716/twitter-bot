@@ -1,12 +1,12 @@
 import Twitter from 'twitter';
 
-import { calculateRating, prepareNewRetweet, catchError } from './helpers';
+import { calculateRating, prepareNewRetweet, time, catchError } from './helpers';
 import { TWITTER_CREDENTIALS, DISCARDED, QUERY } from './constants';
 
 
 const Bot = new Twitter(TWITTER_CREDENTIALS);
 
-console.log('[ INFO ] Bot is up and running!\n');
+console.log(`${time()} --- [ INFO ] Bot is up and running!\n`);
 
 const Retweet = async () => {
   const result = await Bot.get('search/tweets', QUERY).catch(catchError);
@@ -28,7 +28,7 @@ const Retweet = async () => {
     return Retweet();
   }
 
-  console.log(`[ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
+  console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
   return prepareNewRetweet();
 };
 
