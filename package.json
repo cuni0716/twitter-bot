@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.20.1",
+    "date-fns": "^1.29.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
