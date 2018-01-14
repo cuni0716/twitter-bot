@@ -19,6 +19,6 @@ export const prepareNewRetweet = () => {
   const delay = randomTime();
   const nextRetweetDate = new Date(Date.now() + delay);
   const formattedDate = format(addHours(nextRetweetDate, 1), 'HH:mm:ss');
-  console.log(`${time()} --- [ INFO ] Next retweet will be at ${formattedDate}`);
+  console.log(`${time()} --- [ INFO ] Next retweet will be at ${formattedDate}\n`);
   return setTimeout(Retweet, delay);
 };

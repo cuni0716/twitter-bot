@@ -29,6 +29,7 @@ const Retweet = async () => {
   }
 
   console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
+  console.log(`${time()} --- [ INFO ] retweet count this session: ${DISCARDED.length}`);
   return prepareNewRetweet();
 };
 
