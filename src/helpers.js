@@ -12,7 +12,7 @@ export const calculateRating = (twit) => {
 };
 
 export const time = () => format(new Date(), 'DD-MM-YYYY HH:mm:ss');
-export const catchError = errors => console.error(time(), ' --- [ ERROR ]', errors[0].message);
+export const catchError = errors => console.error(time(), '--- [ ERROR ]', errors[0].message);
 export const randomTime = () => Math.floor((Math.random() * THREE_HOURS) + ONE_HOUR);
 
 export const prepareNewRetweet = () => {

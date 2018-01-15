@@ -23,10 +23,8 @@ const Retweet = async () => {
 
   const retweet = await Bot.post(`statuses/retweet/${bestOne.id}`, { id: bestOne.id }).catch(catchError);
 
-  if (!retweet) {
-    DISCARDED.push(bestOne.id);
-    return Retweet();
-  }
+  DISCARDED.push(bestOne.id);
+  if (!retweet) return Retweet();
 
   console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
   console.log(`${time()} --- [ INFO ] retweet count this session: ${DISCARDED.length}`);
