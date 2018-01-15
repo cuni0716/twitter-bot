@@ -11,7 +11,7 @@ export const calculateRating = (twit) => {
   return retweets + favourites;
 };
 
-export const time = () => format(new Date(), 'DD-MM-YYYY HH:mm:ss');
+export const time = () => format(addHours(new Date(), 1), 'DD-MM-YYYY HH:mm:ss');
 export const catchError = errors => console.error(time(), '--- [ ERROR ]', errors[0].message);
 export const randomTime = () => Math.floor((Math.random() * THREE_HOURS) + ONE_HOUR);
 
