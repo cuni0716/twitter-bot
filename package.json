@@ -6,12 +6,15 @@
   "scripts": {
     "start": "babel-watch src/index.js --presets es2015",
     "deploy": "APP_ENV=production babel-watch src/index.js --presets es2015",
+    "sql": "docker-compose run --rm mysql mysql -h mysql -u twitterbot_user --password=twitterbotuser twitterbot_db",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "date-fns": "^1.29.0",
+    "mysql": "^2.15.0",
+    "orm": "^4.0.2",
     "twitter": "^1.7.1"
   },
   "devDependencies": {

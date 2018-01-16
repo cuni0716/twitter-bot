@@ -1,5 +1,8 @@
 const {
   APP_ENV,
+  MYSQL_USER,
+  MYSQL_PASSWORD,
+  MYSQL_DATABASE,
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN,
@@ -7,6 +10,9 @@ const {
 } = process.env;
 
 export const ENV = APP_ENV || 'development';
+export const DB = MYSQL_DATABASE;
+export const DB_USER = MYSQL_USER;
+export const DB_PASS = MYSQL_PASSWORD;
 export const TWITTER_CREDENTIALS = {
   consumer_key: TWITTER_CONSUMER_KEY,
   consumer_secret: TWITTER_CONSUMER_SECRET,

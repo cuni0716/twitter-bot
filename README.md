@@ -4,17 +4,13 @@
 ### Development
 ```bash
 cp .env.example .env
-```
-
-```bash
+yarn install
 docker-compose up --build
 ```
 
 ### Production
 ```bash
 cp .env.example .env_production
-```
-
-```bash
+yarn install
 docker-compose -f docker-compose.production.yml up -d
 ```
