@@ -1,10 +1,12 @@
 const {
+  APP_ENV,
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN,
   TWITTER_ACCESS_TOKEN_SECRET,
 } = process.env;
 
+export const ENV = APP_ENV || 'development';
 export const TWITTER_CREDENTIALS = {
   consumer_key: TWITTER_CONSUMER_KEY,
   consumer_secret: TWITTER_CONSUMER_SECRET,

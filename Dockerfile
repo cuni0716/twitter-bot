@@ -4,7 +4,6 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json /app
-RUN yarn install
 RUN node -v
 
 COPY . /app

@@ -1,7 +1,7 @@
 import Twitter from 'twitter';
 
 import { calculateRating, prepareNewRetweet, time, catchError } from './helpers';
-import { TWITTER_CREDENTIALS, DISCARDED, QUERY } from './constants';
+import { ENV, TWITTER_CREDENTIALS, DISCARDED, QUERY } from './constants';
 
 
 const Bot = new Twitter(TWITTER_CREDENTIALS);
@@ -21,12 +21,15 @@ const Retweet = async () => {
     if (rating > bestOne.rating && !DISCARDED.includes(twit.id_str)) bestOne = { rating, id: twit.id_str };
   });
 
-  const retweet = await Bot.post(`statuses/retweet/${bestOne.id}`, { id: bestOne.id }).catch(catchError);
+  if (ENV === 'production') {
+    const retweet = await Bot.post(`statuses/retweet/${bestOne.id}`, { id: bestOne.id }).catch(catchError);
+    if (!retweet) return Retweet();
+    console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
+  } else {
+    console.log(`${time()} --- [ RETWEET ] SKIPPED BECAUSE IT'S NOT PRODUCTION`);
+  }
 
   DISCARDED.push(bestOne.id);
-  if (!retweet) return Retweet();
-
-  console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
   console.log(`${time()} --- [ INFO ] retweet count this session: ${DISCARDED.length}`);
   return prepareNewRetweet();
 };

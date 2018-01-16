@@ -8,10 +8,10 @@ services:
         ports:
             - '8000:3000'
         env_file:
-            - .env
+            - .env_production
         links:
             - mysql
-        command: ['npm', 'start']
+        command: ['npm', 'run', 'deploy']
     mysql:
         image: mysql:5.7
         ports:
