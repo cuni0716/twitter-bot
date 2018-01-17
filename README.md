@@ -4,13 +4,46 @@
 ### Development
 ```bash
 cp .env.example .env
-yarn install
-docker-compose up --build
 ```
 
-### Production
+Open `.env` file and fill in the values
+
+
+#### Start on devmode
+```bash
+npm run dev
+```
+
+#### Connect to mysql
+```bash
+npm run sql
+```
+
+
+
+### Deploy on production
 ```bash
 cp .env.example .env_production
-yarn install
-docker-compose -f docker-compose.production.yml up -d
+```
+
+Open `.env_production` file and fill in the values
+
+#### Start on production mode
+```bash
+npm run deploy
+```
+
+#### See the logs
+```bash
+npm run logs
+```
+
+#### Update it
+
+For minor updates you only need to do `git pull` in the bot folder.
+
+For major updates you may need to:
+
+```bash
+npm run update
 ```

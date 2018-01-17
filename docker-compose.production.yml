@@ -11,7 +11,7 @@ services:
             - .env_production
         links:
             - mysql
-        command: ['npm', 'run', 'deploy']
+        command: ['npm', 'run', 'prod']
     mysql:
         image: mysql:5.7
         ports:

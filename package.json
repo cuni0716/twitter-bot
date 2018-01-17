@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "yarn install && docker-compose up --build",
     "start": "babel-watch src/index.js --presets es2015",
-    "deploy": "APP_ENV=production babel-watch src/index.js --presets es2015",
+    "deploy": "docker-compose -f docker-compose.production.yml up -d",
+    "prod": "APP_ENV=production babel-watch src/index.js --presets es2015",
+    "update": "docker-compose down && git pull && npm run deploy",
     "sql": "docker-compose run --rm mysql mysql -h mysql -u twitterbot_user --password=twitterbotuser twitterbot_db",
+    "logs": "docker-compose logs -f twitter-bot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "@cuni0716",
   "license": "ISC",
   "dependencies": {
     "date-fns": "^1.29.0",
