@@ -1,5 +1,6 @@
 # Twitter bot
 
+Zero code bot for you to search for some topics of your interest on twitter and retweet one of them every few hours. Store all retweets on a database that you can access and query.
 
 ## Development
 ```bash
