@@ -1,7 +1,7 @@
-## Twitter bot
+# Twitter bot
 
 
-### Development
+## Development
 ```bash
 cp .env.example .env
 ```
@@ -18,10 +18,10 @@ npm run dev
 ```bash
 npm run sql
 ```
+____
 
 
-
-### Deploy on production
+## Deploy on production
 ```bash
 cp .env.example .env_production
 ```
