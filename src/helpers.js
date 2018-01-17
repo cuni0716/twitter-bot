@@ -5,15 +5,15 @@ import format from 'date-fns/format';
 import addHours from 'date-fns/add_hours';
 
 import Retweet from './index';
-import { DB, DB_USER, DB_PASS, ONE_HOUR, THREE_HOURS } from './constants';
+import { DB, DB_USER, DB_PASS, ONE_HOUR, THREE_HOURS, RETWEET_WEIGHT, FAVOURITE_WEIGHT } from './constants';
 
 
 export const getDatabase = async () => orm.connectAsync(`mysql://${DB_USER}:${DB_PASS}@mysql/${DB}`);
 
 export const calculateRating = (twit) => {
   if (twit.retweeted) return 0;
-  const retweets = (twit.retweet_count || 0) * 2;
-  const favourites = twit.favorite_count || 0;
+  const retweets = (twit.retweet_count || 0) * RETWEET_WEIGHT;
+  const favourites = (twit.favorite_count || 0) * FAVOURITE_WEIGHT;
   return retweets + favourites;
 };
 

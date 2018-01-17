@@ -1,5 +1,5 @@
-import Twit from './Twit.model';
+import TwitModel from './Twit.model';
 
 export default [
-  Twit,
+  TwitModel,
 ];

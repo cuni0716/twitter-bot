@@ -6,10 +6,6 @@ const Twit = db => db.define('Twit', {
   favoritedCount: Number,
   rating: Number,
   createdAt: Date,
-}, {
-  methods: {
-    calculateRating: () => (this.retweetCount * 2) + this.favoritedCount,
-  },
 });
 
 export default Twit;
