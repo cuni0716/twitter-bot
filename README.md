@@ -40,10 +40,6 @@ npm run logs
 
 #### Update it
 
-For minor updates you only need to do `git pull` in the bot folder.
+For minor updates you only need to do `npm run update:minor` in the bot folder.
 
-For major updates you may need to:
-
-```bash
-npm run update
-```
+For major updates you may need to `npm run update` in the bot folder.
