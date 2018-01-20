@@ -2,9 +2,11 @@ import Twitter from 'twitter';
 
 import models from './models';
 import Tweet from './models/Tweet';
-import { getDatabase, calculateRating, isBetter, prepareNewRetweet, time, catchError, catchSQLError } from './helpers';
+import { getDatabase, calculateRating, isBetter, prepareNewRetweet, time, catchUnhandleds } from './helpers';
 import { ENV, TWITTER_CREDENTIALS, DISCARDED, QUERY } from './constants';
 
+
+process.on('unhandledRejection', catchUnhandleds);
 
 const Bot = new Twitter(TWITTER_CREDENTIALS);
 
@@ -18,7 +20,7 @@ const Retweet = async () => {
 
   const { Twit: TwitModel } = Database.models;
   const retweeteds = await TwitModel.findAsync().map(twit => twit.tweetId);
-  const result = await Bot.get('search/tweets', QUERY).catch(catchError);
+  const result = await Bot.get('search/tweets', QUERY);
 
   if (!result) return prepareNewRetweet();
 
@@ -32,10 +34,10 @@ const Retweet = async () => {
     }
   });
 
-  await TwitModel.createAsync(bestOne).catch(catchSQLError);
+  await TwitModel.createAsync(bestOne);
 
   if (ENV === 'production') {
-    const retweet = await Bot.post(`statuses/retweet/${bestOne.tweetId}`, { id: bestOne.tweetId }).catch(catchError);
+    const retweet = await Bot.post(`statuses/retweet/${bestOne.tweetId}`, { id: bestOne.tweetId });
     if (!retweet) return Retweet();
     console.log(`${time()} --- [ RETWEET ] id: ${retweet.id_str} rating: ${bestOne.rating}`);
   } else {

@@ -22,9 +22,8 @@ export const isBetter = (twit, rating, bestOne, retweeteds, DISCARDED) =>
 
 export const time = () => format(addHours(new Date(), 1), 'DD-MM-YYYY HH:mm:ss');
 
-export const catchError = errors => console.error(time(), '--- [ ERROR ]', errors[0].message);
-
-export const catchSQLError = error => console.log(time(), '--- [ ERROR ]', error.sqlMessage);
+export const catchUnhandleds = (reason, promise) =>
+  console.log('[ ERROR ] -->', reason, '\n', '[ PROMISE ] -->', promise);
 
 export const randomTime = () => Math.floor((Math.random() * THREE_HOURS) + ONE_HOUR);
 
