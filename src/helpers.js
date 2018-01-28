@@ -9,7 +9,7 @@ import { DB, DB_USER, DB_PASS, ONE_HOUR, THREE_HOURS, RETWEET_WEIGHT, FAVOURITE_
 
 
 export const getDatabase = async () => orm.connectAsync(`
-  mysql://${DB_USER}:${DB_PASS}@mysql/${DB}?pool=true&debug=${process.env.NODE_ENV !== 'production'}
+  mysql://${DB_USER}:${DB_PASS}@mysql/${DB}?pool=true&debug=${process.env.APP_ENV !== 'production'}
 `);
 
 export const calculateRating = (twit) => {
