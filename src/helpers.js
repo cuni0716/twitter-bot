@@ -8,7 +8,9 @@ import Retweet from './index';
 import { DB, DB_USER, DB_PASS, ONE_HOUR, THREE_HOURS, RETWEET_WEIGHT, FAVOURITE_WEIGHT } from './constants';
 
 
-export const getDatabase = async () => orm.connectAsync(`mysql://${DB_USER}:${DB_PASS}@mysql/${DB}`);
+export const getDatabase = async () => orm.connectAsync(`
+  mysql://${DB_USER}:${DB_PASS}@mysql/${DB}?pool=true&debug=${process.env.NODE_ENV !== 'production'}
+`);
 
 export const calculateRating = (twit) => {
   if (twit.retweeted) return 0;

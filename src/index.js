@@ -52,6 +52,12 @@ const Retweet = async () => {
 
   DISCARDED.push(bestOne.tweetId);
 
+  Database.driver.execQuery('SHOW PROCESSLIST;', (err, data) => {
+    data.forEach((process) => {
+      if (process.Command === 'Sleep') Database.driver.execQuery(`kill ${process.Id};`, () => {});
+    });
+  });
+
   return prepareNewRetweet();
 };
 
