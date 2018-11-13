@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "yarn install && docker-compose up --build",
     "start": "babel-watch src/index.js --presets es2015",
-    "deploy": "docker-compose -f docker-compose.production.yml up -d",
+    "deploy": "yarn install && docker-compose -f docker-compose.production.yml up -d",
     "prod": "APP_ENV=production babel-watch src/index.js --presets es2015",
     "update:minor": "git pull",
     "update:major": "docker-compose down && git pull && npm run deploy",
@@ -18,22 +18,22 @@
   "license": "ISC",
   "dependencies": {
     "date-fns": "^1.29.0",
-    "mysql": "^2.15.0",
-    "orm": "^4.0.2",
+    "mysql": "^2.16.0",
+    "orm": "^5.0.2",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.2",
-    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.22.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
-    "eslint": "^4.16.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }
