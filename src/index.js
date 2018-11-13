@@ -2,7 +2,6 @@ const Twitter = require('twitter');
 const format = require('date-fns/format');
 const addHours = require('date-fns/add_hours');
 
-process.on('UnhandledPromiseRejectionWarning:', console.log);
 
 const ENV = process.env.APP_ENV || 'development';
 const TWITTER_INTERESTS = ['reduxjs', 'ecmascript', 'expressjs', 'reactjs', 'nodejs'];
@@ -81,5 +80,3 @@ const calculateRating = (twit) => {
 
 const isBetter = (twit, rating, bestOne) =>
   rating > bestOne.rating && !DISCARDED.includes(twit.id_str);
-
-export default Retweet;
